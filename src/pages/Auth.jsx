@@ -1,51 +1,55 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import userData from "../app.json"; // Adjust path as needed
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setError("");
     
-    // Validate required fields
     if (!email.trim()) {
-      alert("Email is required");
+      setError("Email is required");
       return;
     }
     if (!password.trim()) {
-      alert("Password is required");
+      setError("Password is required");
       return;
     }
     
     setIsLoading(true);
     
-    // Dummy loading - simulate network request
+    // Check credentials against JSON file
     setTimeout(() => {
-      setIsLoading(false);
-      navigate("/regional-bank");
-    }, 1500);
+      const user = userData.users.find(
+        (u) => u.email === email && u.password === password
+      );
+      
+      if (user) {
+        setIsLoading(false);
+        navigate("/welcome");
+      } else {
+        setIsLoading(false);
+        setError("Account does not exist");
+      }
+    }, 800);
   };
 
   return (
     <div style={{
-      height: "100vh",
+      minHeight: "100vh",
       width: "100%",
       background: "#F0F4F8",
       fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
       display: "flex",
-      flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       padding: "20px",
-      overflow: "hidden",
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
     }}>
       <div style={{
         background: "#fff",
@@ -54,8 +58,6 @@ export default function AuthPage() {
         width: "100%",
         maxWidth: 400,
         boxShadow: "0 4px 24px rgba(42,143,212,0.08)",
-        maxHeight: "90vh",
-        overflowY: "auto",
       }}>
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 28 }}>
@@ -74,6 +76,23 @@ export default function AuthPage() {
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#8A9BB0" }}>Sign in to your account</p>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div style={{
+            background: "#FFE5E5",
+            border: "1px solid #FFCDD2",
+            borderRadius: 12,
+            padding: "10px 14px",
+            marginBottom: 20,
+            color: "#E50914",
+            fontSize: 13,
+            fontWeight: 500,
+            textAlign: "center"
+          }}>
+            {error}
+          </div>
+        )}
+
         {/* Form */}
         <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div>
@@ -81,15 +100,17 @@ export default function AuthPage() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
               placeholder="you@example.com"
-              required
               disabled={isLoading}
               style={{
                 width: "100%",
                 padding: "12px 14px",
                 borderRadius: 12,
-                border: "1.5px solid #E0ECF8",
+                border: error ? "1.5px solid #E50914" : "1.5px solid #E0ECF8",
                 fontSize: 14,
                 color: "#1A2B3C",
                 outline: "none",
@@ -106,15 +127,17 @@ export default function AuthPage() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
               placeholder="••••••••"
-              required
               disabled={isLoading}
               style={{
                 width: "100%",
                 padding: "12px 14px",
                 borderRadius: 12,
-                border: "1.5px solid #E0ECF8",
+                border: error ? "1.5px solid #E50914" : "1.5px solid #E0ECF8",
                 fontSize: 14,
                 color: "#1A2B3C",
                 outline: "none",

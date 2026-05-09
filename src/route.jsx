@@ -10,9 +10,9 @@ import History from "./pages/History";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/" element={<Auth />} />
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/welcome" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/transfer" element={<Transfer />} />
         <Route path="/cards" element={<Cards />} />

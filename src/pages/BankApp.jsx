@@ -54,7 +54,7 @@ export default function BankApp() {
                         display: "flex", alignItems: "center", justifyContent: "center",
                         color: "#fff", fontWeight: 700, fontSize: 15,
                     }}>
-                        AO
+                        BH
                     </div>
                     <div>
                         <p style={{ margin: 0, fontSize: 11, color: "#8A9BB0", fontWeight: 500 }}>
