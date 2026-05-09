@@ -4,16 +4,35 @@ import { useNavigate } from "react-router-dom";
 export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/regional-bank");
+    
+    // Validate required fields
+    if (!email.trim()) {
+      alert("Email is required");
+      return;
+    }
+    if (!password.trim()) {
+      alert("Password is required");
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    // Dummy loading - simulate network request
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/regional-bank");
+    }, 1500);
   };
 
   return (
     <div style={{
-      minHeight: "100vh",
+      height: "100vh",
+      width: "100%",
       background: "#F0F4F8",
       fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
       display: "flex",
@@ -21,6 +40,12 @@ export default function AuthPage() {
       alignItems: "center",
       justifyContent: "center",
       padding: "20px",
+      overflow: "hidden",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
     }}>
       <div style={{
         background: "#fff",
@@ -29,6 +54,8 @@ export default function AuthPage() {
         width: "100%",
         maxWidth: 400,
         boxShadow: "0 4px 24px rgba(42,143,212,0.08)",
+        maxHeight: "90vh",
+        overflowY: "auto",
       }}>
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 28 }}>
@@ -48,14 +75,16 @@ export default function AuthPage() {
         </div>
 
         {/* Form */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div>
-            <p style={{ margin: "0 0 6px", fontSize: 12, fontWeight: 600, color: "#5A7290" }}>Email</p>
+            <p style={{ margin: "0 0 6px", fontSize: 12, fontWeight: 600, color: "#5A7290" }}>Email <span style={{ color: "red" }}>*</span></p>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
+              required
+              disabled={isLoading}
               style={{
                 width: "100%",
                 padding: "12px 14px",
@@ -65,18 +94,22 @@ export default function AuthPage() {
                 color: "#1A2B3C",
                 outline: "none",
                 boxSizing: "border-box",
-                background: "#F8FBFE",
+                background: isLoading ? "#F0F4F8" : "#F8FBFE",
+                opacity: isLoading ? 0.7 : 1,
+                cursor: isLoading ? "not-allowed" : "text",
               }}
             />
           </div>
 
           <div>
-            <p style={{ margin: "0 0 6px", fontSize: 12, fontWeight: 600, color: "#5A7290" }}>Password</p>
+            <p style={{ margin: "0 0 6px", fontSize: 12, fontWeight: 600, color: "#5A7290" }}>Password <span style={{ color: "red" }}>*</span></p>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
+              required
+              disabled={isLoading}
               style={{
                 width: "100%",
                 padding: "12px 14px",
@@ -86,7 +119,9 @@ export default function AuthPage() {
                 color: "#1A2B3C",
                 outline: "none",
                 boxSizing: "border-box",
-                background: "#F8FBFE",
+                background: isLoading ? "#F0F4F8" : "#F8FBFE",
+                opacity: isLoading ? 0.7 : 1,
+                cursor: isLoading ? "not-allowed" : "text",
               }}
             />
           </div>
@@ -96,29 +131,58 @@ export default function AuthPage() {
           </p>
 
           <button
-            onClick={handleLogin}
+            type="submit"
+            disabled={isLoading}
             style={{
               marginTop: 6,
               padding: "14px",
               borderRadius: 14,
               border: "none",
-              background: "linear-gradient(135deg, #1A7EC4, #5BB8F5)",
+              background: isLoading ? "#B0D4F5" : "linear-gradient(135deg, #1A7EC4, #5BB8F5)",
               color: "#fff",
               fontSize: 15,
               fontWeight: 700,
-              cursor: "pointer",
+              cursor: isLoading ? "not-allowed" : "pointer",
               letterSpacing: 0.3,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
             }}
           >
-            Sign In
+            {isLoading ? (
+              <>
+                <span style={{
+                  display: "inline-block",
+                  width: "16px",
+                  height: "16px",
+                  border: "2px solid white",
+                  borderTop: "2px solid transparent",
+                  borderRadius: "50%",
+                  animation: "spin 0.8s linear infinite",
+                }} />
+                Signing in...
+              </>
+            ) : (
+              "Sign In"
+            )}
           </button>
-        </div>
+        </form>
 
         <p style={{ margin: "20px 0 0", textAlign: "center", fontSize: 13, color: "#8A9BB0" }}>
           Don't have an account?{" "}
           <span style={{ color: "#2A8FD4", fontWeight: 700, cursor: "pointer" }}>Sign up</span>
         </p>
       </div>
+
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+      </style>
     </div>
   );
 }
