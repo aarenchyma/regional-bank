@@ -1,7 +1,7 @@
 export default function Cards() {
   const cards = [
-    { type: "Visa Platinum", number: "**** **** **** 4821", expiry: "08/26", balance: 8248 },
-    { type: "Mastercard Gold", number: "**** **** **** 9734", expiry: "12/25", balance: 3452 }
+    { type: "Visa Platinum", number: "**** **** **** 4821", expiry: "08/26", balance: 150248 },
+    { type: "Mastercard Gold", number: "**** **** **** 9734", expiry: "12/25", balance: 90452 }
   ];
 
   return (

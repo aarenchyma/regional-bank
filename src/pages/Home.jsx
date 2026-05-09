@@ -52,13 +52,13 @@ export default function Home() {
           </div>
 
           <p style={{ margin: "0 0 20px", fontSize: 34, fontWeight: 800, letterSpacing: -1 }}>
-            {balanceHidden ? "$ ••••••" : "$ 8,248.00"}
+            {balanceHidden ? "$ ••••••" : "$ 150,248.00"}
           </p>
 
           <div style={{ display: "flex", gap: 28 }}>
             <div>
               <p style={{ margin: 0, fontSize: 11, opacity: 0.75 }}>Income</p>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$4,216</p>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$41,216</p>
             </div>
             <div style={{ width: 1, background: "rgba(255,255,255,0.25)" }} />
             <div>

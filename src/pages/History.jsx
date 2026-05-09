@@ -27,11 +27,11 @@ export default function History() {
           <div style={{ display: "flex", gap: 20, marginTop: 12 }}>
             <div>
               <p style={{ margin: 0, fontSize: 11, opacity: 0.75 }}>Total Spent</p>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$2,250</p>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$20,250</p>
             </div>
             <div>
               <p style={{ margin: 0, fontSize: 11, opacity: 0.75 }}>Total Received</p>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$4,216</p>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$6,216</p>
             </div>
           </div>
         </div>
