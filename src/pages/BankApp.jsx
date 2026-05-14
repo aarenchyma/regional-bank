@@ -58,7 +58,7 @@ export default function BankApp() {
                     </div>
                     <div>
                         <p style={{ margin: 0, fontSize: 11, color: "#8A9BB0", fontWeight: 500 }}>
-                            {new Date().getHours() < 12 ? "Good morning," : new Date().getHours() < 18 ? "Good afternoon," : "Good evening,"}
+                            Hello
                         </p>
                         <p style={{ margin: 0, fontSize: 15, color: "#1A2B3C", fontWeight: 700 }}>Bill Hitchen</p>
                     </div>

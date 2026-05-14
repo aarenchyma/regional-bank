@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const TRANSACTIONS = [
   { id: 1, name: "Netflix Subscription", date: "Today, 10:23 AM", amount: -150, icon: "N", color: "#E50914" },
-  { id: 2, name: "Salary Credit", date: "Yesterday, 9:00 AM", amount: 800, icon: "S", color: "#1A73E8" },
+  { id: 2, name: "Salary Credit", date: "Yesterday, 9:00 AM", amount: 8000, icon: "S", color: "#1A73E8" },
   { id: 3, name: "Shopping", date: "Mar 16, 2:15 PM", amount: -400, icon: "J", color: "#FF6600" },
   { id: 5, name: "Transfer from Matt", date: "Mar 14, 3:30 PM", amount: 200, icon: "B", color: "#34A853" },
 ];
@@ -52,7 +52,7 @@ export default function Home() {
           </div>
 
           <p style={{ margin: "0 0 20px", fontSize: 34, fontWeight: 800, letterSpacing: -1 }}>
-            {balanceHidden ? "$ ••••••" : "$ 150,248.00"}
+            {balanceHidden ? "$ ••••••" : "$ 200,248.00"}
           </p>
 
           <div style={{ display: "flex", gap: 28 }}>
@@ -63,7 +63,7 @@ export default function Home() {
             <div style={{ width: 1, background: "rgba(255,255,255,0.25)" }} />
             <div>
               <p style={{ margin: 0, fontSize: 11, opacity: 0.75 }}>Expenses</p>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$2,250</p>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 700 }}>$10,250</p>
             </div>
           </div>
 
@@ -130,8 +130,8 @@ export default function Home() {
             </div>
           </div>
           <div style={{ textAlign: "right" }}>
-            <p style={{ margin: 0, fontSize: 15, fontWeight: 800, color: "#2A8FD4" }}>$6,500</p>
-            <p style={{ margin: 0, fontSize: 10, color: "#8A9BB0" }}>Locked till Apr</p>
+            <p style={{ margin: 0, fontSize: 15, fontWeight: 800, color: "#2A8FD4" }}>$35,500</p>
+            <p style={{ margin: 0, fontSize: 10, color: "#8A9BB0" }}>Locked till June</p>
           </div>
         </div>
       </div>

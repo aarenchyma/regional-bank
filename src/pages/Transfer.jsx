@@ -22,7 +22,7 @@ export default function Transfer() {
           marginBottom: 24
         }}>
           <p style={{ margin: "0 0 8px", fontSize: 13, opacity: 0.85 }}>Available Balance</p>
-          <p style={{ margin: 0, fontSize: 28, fontWeight: 800 }}>$150,248.00</p>
+          <p style={{ margin: 0, fontSize: 28, fontWeight: 800 }}>$200,248.00</p>
         </div>
 
         <div style={{ background: "#fff", borderRadius: 16, padding: "20px", border: "1px solid #E0ECF8" }}>
